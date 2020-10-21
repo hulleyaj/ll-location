@@ -4,29 +4,35 @@ import { connect } from 'react-redux';
 import { Button, decrementAction, incrementAction } from 'll-pkg';
 import { Text, View } from '../components/Themed';
 
-function TabOneScreen({ decrementAction, count, incrementAction}) {
-  return (
-    <View style={styles.container}>
-      <Button text="-" onClick={decrementAction} />
-      <Text>{count}</Text>
-      <Button text="+" onClick={incrementAction} />
-    </View>
-  );
+// function TabOneScreen({ decrementAction, count, incrementAction}) {
+//   return (
+//     <View style={styles.container}>
+//       <Button text="-" onClick={decrementAction} />
+//       <Text>{count}</Text>
+//       <Button text="+" onClick={incrementAction} />
+//     </View>
+//   );
+// }
+
+// const mapStateToProps = (state) => ({
+//   count: state.counterReducer.count
+// })
+
+// const mapDispatchToProps = {
+//   decrementAction,
+//   incrementAction
+// }
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(TabOneScreen);
+
+export default function TabOneScreen() {
+  return <View>
+    <Text>TABONE</Text>
+  </View>
 }
-
-const mapStateToProps = (state) => ({
-  count: state.counterReducer.count
-})
-
-const mapDispatchToProps = {
-  decrementAction,
-  incrementAction
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TabOneScreen);
 
 const styles = StyleSheet.create({
   container: {
