@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Platform, Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
+import NativeScreen from './screens/NativeScreen';
 
 export default function App() {
   const [location, setLocation] = useState(null);
@@ -25,7 +26,7 @@ export default function App() {
     }
   });
 
-  let text = 'Waiting..';
+  let text = 'Waiting1..';
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
+      <NativeScreen />
     </View>
   );
 }

@@ -2,39 +2,41 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, TextInput, Button, Platform } from 'react-native';
 import * as Location from 'expo-location';
 
-function NativeScreen() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+const NativeScreen = () => <Text>LOL</Text>
 
-  useEffect(() => {
-    (async () => {
-      try {
-      let { status } = await Location.requestPermissionsAsync();
-      } catch (e) {
-        setErrorMsg(e)
-      }
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-      }
+// function NativeScreen() {
+//   const [location, setLocation] = useState(null);
+//   const [errorMsg, setErrorMsg] = useState(null);
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
+//   useEffect(() => {
+//     (async () => {
+//       try {
+//       let { status } = await Location.requestPermissionsAsync();
+//       } catch (e) {
+//         setErrorMsg(e)
+//       }
+//       if (status !== 'granted') {
+//         setErrorMsg('Permission to access location was denied');
+//       }
 
-  let text = 'Waiting2..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
+//       let location = await Location.getCurrentPositionAsync({});
+//       setLocation(location);
+//     })();
+//   }, []);
 
-  return (
-    <View style={styles.container}>
-      <Text>{text}</Text>
-    </View>
-  );
-};
+//   let text = 'Waiting2..';
+//   if (errorMsg) {
+//     text = errorMsg;
+//   } else if (location) {
+//     text = JSON.stringify(location);
+//   }
+
+//   return (
+//     <View style={styles.container}>
+//       <Text>{text}</Text>
+//     </View>
+//   );
+// };
 
 export default NativeScreen;
 
