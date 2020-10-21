@@ -1,44 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, Platform } from 'react-native';
+import { Platform, Text, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
-const NativeScreen = () => <Text>LOL</Text>
+export default function NativeScreen() {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
-// function NativeScreen() {
-//   const [location, setLocation] = useState(null);
-//   const [errorMsg, setErrorMsg] = useState(null);
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+      }
 
-//   useEffect(() => {
-//     (async () => {
-//       try {
-//       let { status } = await Location.requestPermissionsAsync();
-//       } catch (e) {
-//         setErrorMsg(e)
-//       }
-//       if (status !== 'granted') {
-//         setErrorMsg('Permission to access location was denied');
-//       }
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
 
-//       let location = await Location.getCurrentPositionAsync({});
-//       setLocation(location);
-//     })();
-//   }, []);
+  let text = 'WaitingLOL..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
 
-//   let text = 'Waiting2..';
-//   if (errorMsg) {
-//     text = errorMsg;
-//   } else if (location) {
-//     text = JSON.stringify(location);
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <Text>{text}</Text>
-//     </View>
-//   );
-// };
-
-export default NativeScreen;
+  return (
+    <View style={styles.container}>
+      <Text>LOL</Text>
+      <Text>{text}</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
