@@ -9,12 +9,6 @@ export default function NativeScreen() {
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-      }
-
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     })();
@@ -29,7 +23,7 @@ export default function NativeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>LOL</Text>
+      <Text>LOL4</Text>
       <Text>{text}</Text>
     </View>
   );
